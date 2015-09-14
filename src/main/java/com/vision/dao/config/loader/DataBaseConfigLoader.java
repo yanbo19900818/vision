@@ -1,6 +1,7 @@
 package com.vision.dao.config.loader;
 
 import com.vision.dao.config.database.DataBaseColumnConfig;
+import com.vision.dao.config.database.DataBaseConfig;
 import com.vision.dao.config.database.DataBaseTableConfig;
 import com.vision.dao.manager.DatasourceManager;
 import com.vision.exception.DaoException;
@@ -11,7 +12,9 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -22,13 +25,35 @@ public class DataBaseConfigLoader {
     private DatasourceManager datasourceManager = DatasourceManager.getInstance();
 
 
-    public void loadDatabase(String database) {
+    public DataBaseConfig loadDatabase(String databaseName) {
+        DataSource dataSource = datasourceManager.getDataSourceByDatabaseName(databaseName);
+        try (Connection connection = dataSource.getConnection()) {
+            DatabaseMetaData databaseMetaData = connection.getMetaData();
+            ResultSet resultSet = databaseMetaData.getTables(null, null, null, new String[]{"TABLE"});
+            DataBaseConfig dataBaseConfig = new DataBaseConfig();
+            dataBaseConfig.setDataBaseName(databaseName);
+            Map<String, DataBaseTableConfig> dataBaseTableConfigMap = new HashMap<>();
+            while (resultSet.next()) {
+                String tableName = resultSet.getString("TABLE_NAME");
+                if (StringUtils.isBlank(tableName)) {
+                    continue;
+                }
+                DataBaseTableConfig dataBaseTableConfig = loadTable(tableName, databaseMetaData);
+                if (dataBaseTableConfig == null) {
+                    throw new DaoException("load table failed,databaseName=" + databaseName + ",tableName=" + tableName);
+                }
+                dataBaseTableConfigMap.put(tableName, dataBaseTableConfig);
+            }
+            dataBaseConfig.setDataBaseTableConfigMap(dataBaseTableConfigMap);
+        } catch (SQLException e) {
+            throw new DaoException("load DB failed,databaseName=" + databaseName + "failed", e);
+        }
 
     }
 
-    private String loadPrimaryKey(String tableName, Connection connection) {
+    private String loadPrimaryKey(String tableName, DatabaseMetaData databaseMetaData) {
         try {
-            DatabaseMetaData databaseMetaData = connection.getMetaData();
+
             ResultSet rs = databaseMetaData.getPrimaryKeys(null, null, tableName);
             String primaryKeyColumnName = null;
             while (rs.next()) {
@@ -37,15 +62,13 @@ public class DataBaseConfigLoader {
             rs.close();
             return primaryKeyColumnName;
         } catch (SQLException e) {
-            throw new DaoException("load DB Table" + tableName + "failed", e);
+            throw new DaoException("load DB Table" + tableName + "primary key failed", e);
         }
     }
 
-    private DataBaseTableConfig loadTable(String tableName, String databaseName) {
-        DataSource dataSource = datasourceManager.getDataSourceByDatabaseName(databaseName);
-        try (Connection connection = dataSource.getConnection()) {
-            DatabaseMetaData databaseMetaData = connection.getMetaData();
-            String primaryKeyColumnName = loadPrimaryKey(tableName, connection);
+    private DataBaseTableConfig loadTable(String tableName, DatabaseMetaData databaseMetaData) {
+        try {
+            String primaryKeyColumnName = loadPrimaryKey(tableName, databaseMetaData);
             if (StringUtils.isBlank(primaryKeyColumnName)) {
                 throw new DaoException("load DB Table" + tableName + "failed,no primary key");
             }
