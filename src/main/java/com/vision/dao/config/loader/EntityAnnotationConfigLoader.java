@@ -7,14 +7,17 @@ import com.vision.dao.config.entity.EntityFieldConfig;
 import com.vision.exception.DaoException;
 import org.apache.commons.lang3.StringUtils;
 
+import java.io.File;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by yanbo on 15/9/13.
  */
-public class EntityConfigLoader {
+public class EntityAnnotationConfigLoader {
 
     public EntityConfig loadEntity(String ClassName) {
         Class<?> c = null;
@@ -44,19 +47,21 @@ public class EntityConfigLoader {
         Field[] fields = c.getDeclaredFields();
         if (fields == null || fields.length <= 0)
             throw new DaoException("load entity " + ClassName + "faile, no field");
-        List<EntityFieldConfig> entityFieldConfigs = new ArrayList<>(fields.length);
+        Map<String, EntityFieldConfig> entityFieldConfigMap = new HashMap<>();
         for (Field field : fields) {
             EntityField entityField = field.getAnnotation(EntityField.class);
+            EntityFieldConfig entityFieldConfig = new EntityFieldConfig();
             if (entityField == null) {
-
+                entityFieldConfig.setEntityColName(field.getName());
+                entityFieldConfig.setDbColType(field.getType().getTypeName());
+            } else {
+                entityFieldConfig.setDbColName(entityField.colName());
+                entityFieldConfig.setDbColType(entityField.colType());
             }
+            entityFieldConfigMap.put(field.getName(), entityFieldConfig);
         }
-        entityConfig.setEntityFieldConfigs(entityFieldConfigs);
+        entityConfig.setEntityFieldConfigMap(entityFieldConfigMap);
         return entityConfig;
     }
 
-
-    private EntityFieldConfig loadEntityField(EntityField entityField,) {
-
-    }
 }

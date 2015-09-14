@@ -1,67 +1,67 @@
 package com.vision.dao.config.entity;
 
 import java.util.List;
+import java.util.Map;
 
 public class EntityConfig {
-	private String DBName;
-	private String tableName;
-	private boolean isSharding;
-	private String shardingScheme;
-	/**
-	 * 主键
-	 */
-	private PrimaryKeyFiledConfig primaryKeyFiledConfig;
-	/**
-	 * 字段
-	 */
-	List<EntityFieldConfig> entityFieldConfigs;
+    private String DBName;
+    private String tableName;
+    private boolean isSharding;
+    private String shardingScheme;
+    /**
+     * 主键
+     */
+    private PrimaryKeyFiledConfig primaryKeyFiledConfig;
+    /**
+     * 字段
+     */
+    Map<String, EntityFieldConfig> entityFieldConfigMap;
 
-	public String getDBName() {
-		return DBName;
-	}
+    public String getDBName() {
+        return DBName;
+    }
 
-	public void setDBName(String dBName) {
-		DBName = dBName;
-	}
+    public void setDBName(String dBName) {
+        DBName = dBName;
+    }
 
-	public String getTableName() {
-		return tableName;
-	}
+    public String getTableName() {
+        return tableName;
+    }
 
-	public void setTableName(String tableName) {
-		this.tableName = tableName;
-	}
+    public void setTableName(String tableName) {
+        this.tableName = tableName;
+    }
 
-	public boolean isSharding() {
-		return isSharding;
-	}
+    public boolean isSharding() {
+        return isSharding;
+    }
 
-	public void setSharding(boolean isSharding) {
-		this.isSharding = isSharding;
-	}
+    public void setSharding(boolean isSharding) {
+        this.isSharding = isSharding;
+    }
 
-	public String getShardingScheme() {
-		return shardingScheme;
-	}
+    public String getShardingScheme() {
+        return shardingScheme;
+    }
 
-	public void setShardingScheme(String shardingScheme) {
-		this.shardingScheme = shardingScheme;
-	}
+    public void setShardingScheme(String shardingScheme) {
+        this.shardingScheme = shardingScheme;
+    }
 
-	public PrimaryKeyFiledConfig getPrimaryKeyFiledConfig() {
-		return primaryKeyFiledConfig;
-	}
+    public PrimaryKeyFiledConfig getPrimaryKeyFiledConfig() {
+        return primaryKeyFiledConfig;
+    }
 
-	public void setPrimaryKeyFiledConfig(PrimaryKeyFiledConfig primaryKeyFiledConfig) {
-		this.primaryKeyFiledConfig = primaryKeyFiledConfig;
-	}
+    public void setPrimaryKeyFiledConfig(PrimaryKeyFiledConfig primaryKeyFiledConfig) {
+        this.primaryKeyFiledConfig = primaryKeyFiledConfig;
+    }
 
-	public List<EntityFieldConfig> getEntityFieldConfigs() {
-		return entityFieldConfigs;
-	}
+    public Map<String, EntityFieldConfig> getEntityFieldConfigMap() {
+        return entityFieldConfigMap;
+    }
 
-	public void setEntityFieldConfigs(List<EntityFieldConfig> entityFieldConfigs) {
-		this.entityFieldConfigs = entityFieldConfigs;
-	}
-
+    public void setEntityFieldConfigMap(Map<String, EntityFieldConfig> entityFieldConfigMap) {
+        this.entityFieldConfigMap = entityFieldConfigMap;
+    }
 }

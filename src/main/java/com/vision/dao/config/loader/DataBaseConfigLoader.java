@@ -12,9 +12,7 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -45,6 +43,7 @@ public class DataBaseConfigLoader {
                 dataBaseTableConfigMap.put(tableName, dataBaseTableConfig);
             }
             dataBaseConfig.setDataBaseTableConfigMap(dataBaseTableConfigMap);
+            return dataBaseConfig;
         } catch (SQLException e) {
             throw new DaoException("load DB failed,databaseName=" + databaseName + "failed", e);
         }
