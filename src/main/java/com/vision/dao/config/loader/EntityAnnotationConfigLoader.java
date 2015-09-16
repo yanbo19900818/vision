@@ -29,7 +29,7 @@ public class EntityAnnotationConfigLoader {
         EntityConfig entityConfig = new EntityConfig();
         Entity entity = c.getAnnotation(Entity.class);
         //checkAnnotation
-        if (StringUtils.isBlank(entity.DBName()))
+        if (StringUtils.isBlank(entity.DatabaseName()))
             throw new DaoException("load entity " + ClassName + "faile, db Name is Null");
         if (StringUtils.isBlank(entity.tableName()))
             throw new DaoException("load entity " + ClassName + "faile, table Name is Null");
@@ -38,7 +38,7 @@ public class EntityAnnotationConfigLoader {
                 throw new DaoException("load entity " + ClassName + "faile, shardingScheme is Null");
             }
         }
-        entityConfig.setDBName(entity.DBName());
+        entityConfig.setDatabaseName(entity.DatabaseName());
         entityConfig.setTableName(entity.tableName());
         if (entity.isSharding()) {
             entityConfig.setSharding(true);
@@ -52,11 +52,11 @@ public class EntityAnnotationConfigLoader {
             EntityField entityField = field.getAnnotation(EntityField.class);
             EntityFieldConfig entityFieldConfig = new EntityFieldConfig();
             if (entityField == null) {
-                entityFieldConfig.setEntityColName(field.getName());
-                entityFieldConfig.setDbColType(field.getType().getTypeName());
+                entityFieldConfig.setEntityColumnName(field.getName());
+                entityFieldConfig.setDatabaseColumnType(field.getType().getName());
             } else {
-                entityFieldConfig.setDbColName(entityField.colName());
-                entityFieldConfig.setDbColType(entityField.colType());
+                entityFieldConfig.setDatabaseColumnName(entityField.databaseColumnName());
+                entityFieldConfig.setDatabaseColumnType(entityField.databaseColumnType());
             }
             entityFieldConfigMap.put(field.getName(), entityFieldConfig);
         }

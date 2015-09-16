@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 public class EntityConfig {
-    private String DBName;
+    private String databaseName;
     private String tableName;
     private boolean isSharding;
     private String shardingScheme;
@@ -17,12 +17,12 @@ public class EntityConfig {
      */
     Map<String, EntityFieldConfig> entityFieldConfigMap;
 
-    public String getDBName() {
-        return DBName;
+    public String getDatabaseName() {
+        return databaseName;
     }
 
-    public void setDBName(String dBName) {
-        DBName = dBName;
+    public void setDatabaseName(String databaseName) {
+        this.databaseName = databaseName;
     }
 
     public String getTableName() {

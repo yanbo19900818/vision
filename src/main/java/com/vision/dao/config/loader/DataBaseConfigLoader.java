@@ -22,7 +22,6 @@ public class DataBaseConfigLoader {
 
     private DatasourceManager datasourceManager = DatasourceManager.getInstance();
 
-
     public DataBaseConfig loadDatabase(String databaseName) {
         DataSource dataSource = datasourceManager.getDataSourceByDatabaseName(databaseName);
         try (Connection connection = dataSource.getConnection()) {
