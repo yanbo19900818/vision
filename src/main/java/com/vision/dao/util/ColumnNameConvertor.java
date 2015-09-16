@@ -21,4 +21,20 @@ public class ColumnNameConvertor {
         }
         return stringBuilder.toString();
     }
+
+    public static String convertToDatabaseColumnName(String entityColumnName) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < entityColumnName.length(); i++) {
+            char c = entityColumnName.charAt(i);
+            if (c >= 'A' && c <= 'Z') {
+
+                c = (char) (c + 32);
+                if (i != 0) {
+                    stringBuilder.append("_");
+                }
+            }
+            stringBuilder.append(c);
+        }
+        return stringBuilder.toString();
+    }
 }

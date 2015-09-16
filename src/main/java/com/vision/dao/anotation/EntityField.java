@@ -5,7 +5,7 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.FIELD)
 public @interface EntityField {
-	public String colName();
+    public String databaseColumnName();
 
-	public String colType();
+    public String databaseColumnType();
 }

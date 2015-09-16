@@ -29,7 +29,7 @@ public class EntityAnnotationConfigLoader {
         EntityConfig entityConfig = new EntityConfig();
         Entity entity = c.getAnnotation(Entity.class);
         //checkAnnotation
-        if (StringUtils.isBlank(entity.DatabaseName()))
+        if (StringUtils.isBlank(entity.databaseName()))
             throw new DaoException("load entity " + ClassName + "faile, db Name is Null");
         if (StringUtils.isBlank(entity.tableName()))
             throw new DaoException("load entity " + ClassName + "faile, table Name is Null");
@@ -38,7 +38,7 @@ public class EntityAnnotationConfigLoader {
                 throw new DaoException("load entity " + ClassName + "faile, shardingScheme is Null");
             }
         }
-        entityConfig.setDatabaseName(entity.DatabaseName());
+        entityConfig.setDatabaseName(entity.databaseName());
         entityConfig.setTableName(entity.tableName());
         if (entity.isSharding()) {
             entityConfig.setSharding(true);
