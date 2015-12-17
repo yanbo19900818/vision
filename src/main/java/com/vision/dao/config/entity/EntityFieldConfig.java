@@ -5,41 +5,40 @@ import org.apache.commons.lang3.StringUtils;
 import com.vision.dao.anotation.EntityField;
 
 public class EntityFieldConfig {
-	private String dbColName;
-	private String dbColType;
-	private String entityColName;
-	private String entityColType;
+    private String databaseColumnName;
+    private String databaseColumnType;
+    private String entityColumnName;
+    private String entityColumnType;
 
-	public String getDbColName() {
-		return dbColName;
-	}
+    public String getDatabaseColumnName() {
+        return databaseColumnName;
+    }
 
-	public void setDbColName(String dbColName) {
-		this.dbColName = dbColName;
-	}
+    public void setDatabaseColumnName(String databaseColumnName) {
+        this.databaseColumnName = databaseColumnName;
+    }
 
-	public String getDbColType() {
-		return dbColType;
-	}
+    public String getDatabaseColumnType() {
+        return databaseColumnType;
+    }
 
-	public void setDbColType(String dbColType) {
-		this.dbColType = dbColType;
-	}
+    public void setDatabaseColumnType(String databaseColumnType) {
+        this.databaseColumnType = databaseColumnType;
+    }
 
-	public String getEntityColName() {
-		return entityColName;
-	}
+    public String getEntityColumnName() {
+        return entityColumnName;
+    }
 
-	public void setEntityColName(String entityColName) {
-		this.entityColName = entityColName;
-	}
+    public void setEntityColumnName(String entityColumnName) {
+        this.entityColumnName = entityColumnName;
+    }
 
-	public String getEntityColType() {
-		return entityColType;
-	}
+    public String getEntityColumnType() {
+        return entityColumnType;
+    }
 
-	public void setEntityColType(String entityColType) {
-		this.entityColType = entityColType;
-	}
-
+    public void setEntityColumnType(String entityColumnType) {
+        this.entityColumnType = entityColumnType;
+    }
 }
