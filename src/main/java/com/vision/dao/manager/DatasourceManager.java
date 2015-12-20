@@ -11,15 +11,6 @@ import java.util.Map;
  * Created by chenchen on 15/9/13.
  */
 public class DatasourceManager {
-    private static DatasourceManager instance = new DatasourceManager();
-
-    private DatasourceManager() {
-    }
-
-    public static DatasourceManager getInstance() {
-        return instance;
-    }
-
     public enum EnumDataSourceType {
         JNDI, JDBC;
     }
@@ -37,8 +28,15 @@ public class DatasourceManager {
         return dataSource;
     }
 
+    /**
+     * 加载数据源
+     *
+     * @param databaseName
+     * @param enumDataSourceType
+     * @return
+     */
     public DataSource loadDataSource(String databaseName, EnumDataSourceType enumDataSourceType) {
-        //TODO 根据类型的不同,加载DataSource
+        //TODO 根据类型的不同,加载DataSource,JNDI从spring中读取,jdbc从配置文件中读取
         return null;
     }
 }

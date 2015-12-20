@@ -20,7 +20,7 @@ import java.util.Map;
  */
 public class DataBaseConfigLoader {
 
-    private DatasourceManager datasourceManager = DatasourceManager.getInstance();
+    private DatasourceManager datasourceManager;
 
     public DataBaseConfig loadDatabase(String databaseName) {
         DataSource dataSource = datasourceManager.getDataSourceByDatabaseName(databaseName);

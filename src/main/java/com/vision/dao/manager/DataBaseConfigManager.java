@@ -8,14 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DataBaseConfigManager {
-    private static DataBaseConfigManager instance = new DataBaseConfigManager();
-
-    private DataBaseConfigManager() {
-    }
-
-    public static DataBaseConfigManager getInstance() {
-        return instance;
-    }
 
     DataBaseConfigLoader dataBaseConfigLoader = new DataBaseConfigLoader();
     private Map<String, DataBaseConfig> dataBaseConfigMap = new HashMap<>();

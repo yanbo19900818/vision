@@ -17,16 +17,8 @@ import java.util.Map;
  *
  */
 public class EntityConfigManager {
-    private static EntityConfigManager instance = new EntityConfigManager();
+    DataBaseConfigManager dataBaseConfigManager;
 
-    private EntityConfigManager() {
-    }
-
-    public static EntityConfigManager getInstance() {
-        return instance;
-    }
-
-    DataBaseConfigManager dataBaseConfigManager = DataBaseConfigManager.getInstance();
     EntityAnnotationConfigLoader entityAnnotationConfigLoader = new EntityAnnotationConfigLoader();
 
     private Map<String, EntityConfig> entityConfigMap = new HashMap<>();
