@@ -10,11 +10,11 @@ import java.lang.annotation.Target;
  */
 @Target(ElementType.TYPE)
 public @interface Entity {
-    public String databaseName();
+    String databaseName();
 
-    public String tableName();
+    String tableName();
 
-    public boolean isSharding() default false;
+    boolean isSharding() default false;
 
-    public String shardingScheme();
+    String shardingScheme();
 }

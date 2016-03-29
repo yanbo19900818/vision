@@ -21,8 +21,12 @@ import java.util.Map;
 public class DataBaseConfigLoader {
 
     private DatasourceManager datasourceManager;
+    private DataBaseConfig dataBaseConfig;
 
     public DataBaseConfig loadDatabase(String databaseName) {
+        if (dataBaseConfig != null) {
+            return dataBaseConfig;
+        }
         DataSource dataSource = datasourceManager.getDataSourceByDatabaseName(databaseName);
         try (Connection connection = dataSource.getConnection()) {
             DatabaseMetaData databaseMetaData = connection.getMetaData();
@@ -42,6 +46,7 @@ public class DataBaseConfigLoader {
                 dataBaseTableConfigMap.put(tableName, dataBaseTableConfig);
             }
             dataBaseConfig.setDataBaseTableConfigMap(dataBaseTableConfigMap);
+            this.dataBaseConfig = dataBaseConfig;
             return dataBaseConfig;
         } catch (SQLException e) {
             throw new DaoException("load DB failed,databaseName=" + databaseName + "failed", e);

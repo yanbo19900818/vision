@@ -24,11 +24,11 @@ public class EntityConfigManager {
     private Map<String, EntityConfig> entityConfigMap = new HashMap<>();
 
     public EntityConfig getEntityConfig(String entityClassName) {
-        if (entityConfigMap.containsKey(entityClassName)) {
-            return entityConfigMap.get(entityClassName);
+        EntityConfig entityConfig = entityConfigMap.get(entityClassName);
+        if (entityConfig != null) {
+            return entityConfig;
         }
-        EntityConfig entityConfig = buildEntityCOnfig(entityClassName);
-        entityConfigMap.put(entityClassName, entityConfig);
+        entityConfigMap.put(entityClassName, buildEntityCOnfig(entityClassName));
         return entityConfig;
     }
 

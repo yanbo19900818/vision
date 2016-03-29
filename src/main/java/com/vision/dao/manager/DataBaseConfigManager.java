@@ -13,10 +13,11 @@ public class DataBaseConfigManager {
     private Map<String, DataBaseConfig> dataBaseConfigMap = new HashMap<>();
 
     public DataBaseConfig getDataBaseTableConfig(String databaseName) {
-        if (dataBaseConfigMap.containsKey(databaseName)) {
+        DataBaseConfig dataBaseConfig = dataBaseConfigMap.get(databaseName);
+        if (dataBaseConfig != null) {
             return dataBaseConfigMap.get(databaseName);
         }
-        DataBaseConfig dataBaseConfig = dataBaseConfigLoader.loadDatabase(databaseName);
+        dataBaseConfig = dataBaseConfigLoader.loadDatabase(databaseName);
         dataBaseConfigMap.put(databaseName, dataBaseConfig);
         return dataBaseConfig;
     }

@@ -5,13 +5,13 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.FIELD)
 public @interface PrimaryKeyField {
-	public PrimaryKeyType primaryKeyType() default PrimaryKeyType.PRIMARY_KEY;
+    PrimaryKeyType primaryKeyType() default PrimaryKeyType.PRIMARY_KEY;
 
-	public String colName();
+    String colName() default "";
 
-	public String colType();
+    String colType() default "";
 
-	public enum PrimaryKeyType {
-		AUTO_INCREASE, PRIMARY_KEY;
-	}
+    enum PrimaryKeyType {
+        AUTO_INCREASE, PRIMARY_KEY;
+    }
 }
