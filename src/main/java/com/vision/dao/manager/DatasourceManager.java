@@ -17,7 +17,7 @@ import java.util.Properties;
  */
 public class DatasourceManager {
     public enum EnumDataSourceType {
-        JNDI, JDBC;
+        JNDI, JDBC
     }
 
     private Map<String, DataSource> dataSourceMap = new HashMap<>();
@@ -26,7 +26,7 @@ public class DatasourceManager {
         if (dataSourceMap.containsKey(databaseName)) {
             return dataSourceMap.get(databaseName);
         }
-        //TODO 加载datasource
+        //加载datasource
         DataSource dataSource = loadDataSource(databaseName, EnumDataSourceType.JDBC);
         if (dataSource == null) throw new DaoException("load database failed,databaseName=" + databaseName);
         dataSourceMap.put(databaseName, dataSource);
@@ -41,7 +41,7 @@ public class DatasourceManager {
      * @return
      */
     public DataSource loadDataSource(String databaseName, EnumDataSourceType enumDataSourceType) {
-        //TODO 根据类型的不同,加载DataSource,JNDI从spring中读取,jdbc从配置文件中读取
+        //根据类型的不同,加载DataSource,JNDI从spring中读取,jdbc从配置文件中读取
         if (enumDataSourceType == enumDataSourceType.JNDI) {
             try {
                 Context ic = new InitialContext();

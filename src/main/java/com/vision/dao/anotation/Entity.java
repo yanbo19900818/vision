@@ -16,5 +16,5 @@ public @interface Entity {
 
     boolean isSharding() default false;
 
-    String shardingScheme();
+    String shardingScheme() default "";
 }
