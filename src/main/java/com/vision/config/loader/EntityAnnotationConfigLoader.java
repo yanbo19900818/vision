@@ -1,13 +1,12 @@
-package com.vision.dao.config.loader;
+package com.vision.config.loader;
 
-import com.vision.dao.anotation.Entity;
-import com.vision.dao.anotation.EntityField;
-import com.vision.dao.config.entity.EntityConfig;
-import com.vision.dao.config.entity.EntityFieldConfig;
+import com.vision.anotation.Entity;
+import com.vision.anotation.EntityField;
+import com.vision.config.entity.EntityConfig;
+import com.vision.config.entity.EntityFieldConfig;
 import com.vision.exception.DaoException;
 import org.apache.commons.lang3.StringUtils;
 
-import java.io.File;
 import java.lang.reflect.Field;
 import java.util.*;
 import java.util.stream.Collectors;

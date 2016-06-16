@@ -1,7 +1,6 @@
-package com.vision.dao.query;
+package com.vision.query;
 
-import com.vision.dao.config.entity.EntityConfig;
-import com.vision.dao.manager.EntityConfigManager;
+import com.vision.manager.EntityConfigManager;
 
 import java.util.ArrayList;
 import java.util.List;

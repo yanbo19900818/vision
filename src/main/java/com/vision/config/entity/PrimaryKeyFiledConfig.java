@@ -1,6 +1,6 @@
-package com.vision.dao.config.entity;
+package com.vision.config.entity;
 
-import com.vision.dao.anotation.PrimaryKeyField.PrimaryKeyType;
+import com.vision.anotation.PrimaryKeyField.PrimaryKeyType;
 
 public class PrimaryKeyFiledConfig extends EntityFieldConfig {
 	private PrimaryKeyType primaryKeyType;

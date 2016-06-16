@@ -1,6 +1,5 @@
-package com.vision.dao.config.entity;
+package com.vision.config.entity;
 
-import java.util.List;
 import java.util.Map;
 
 public class EntityConfig {

@@ -1,4 +1,4 @@
-package com.vision.dao.util;
+package com.vision.util;
 
 import org.apache.log4j.Logger;
 

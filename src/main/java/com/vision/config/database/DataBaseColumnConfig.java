@@ -1,4 +1,4 @@
-package com.vision.dao.config.database;
+package com.vision.config.database;
 
 public class DataBaseColumnConfig {
 	private String columnName;

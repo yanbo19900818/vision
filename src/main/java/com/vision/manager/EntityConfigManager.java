@@ -1,12 +1,12 @@
-package com.vision.dao.manager;
+package com.vision.manager;
 
-import com.vision.dao.config.database.DataBaseColumnConfig;
-import com.vision.dao.config.database.DataBaseConfig;
-import com.vision.dao.config.database.DataBaseTableConfig;
-import com.vision.dao.config.entity.EntityConfig;
-import com.vision.dao.config.entity.EntityFieldConfig;
-import com.vision.dao.config.loader.EntityAnnotationConfigLoader;
-import com.vision.dao.util.ColumnNameConvertor;
+import com.vision.config.database.DataBaseColumnConfig;
+import com.vision.config.database.DataBaseConfig;
+import com.vision.config.database.DataBaseTableConfig;
+import com.vision.config.entity.EntityConfig;
+import com.vision.config.entity.EntityFieldConfig;
+import com.vision.config.loader.EntityAnnotationConfigLoader;
+import com.vision.util.ColumnNameConvertor;
 import com.vision.exception.DaoException;
 import org.apache.commons.lang3.StringUtils;
 

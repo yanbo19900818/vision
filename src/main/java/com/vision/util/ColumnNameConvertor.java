@@ -1,4 +1,4 @@
-package com.vision.dao.util;
+package com.vision.util;
 
 /**
  * Created by DELL on 2015/9/16.

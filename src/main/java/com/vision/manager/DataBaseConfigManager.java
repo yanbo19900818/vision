@@ -1,8 +1,7 @@
-package com.vision.dao.manager;
+package com.vision.manager;
 
-import com.vision.dao.config.database.DataBaseConfig;
-import com.vision.dao.config.database.DataBaseTableConfig;
-import com.vision.dao.config.loader.DataBaseConfigLoader;
+import com.vision.config.database.DataBaseConfig;
+import com.vision.config.loader.DataBaseConfigLoader;
 
 import java.util.HashMap;
 import java.util.Map;

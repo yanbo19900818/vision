@@ -1,8 +1,6 @@
-package com.vision.dao.config.entity;
+package com.vision.config.entity;
 
-import org.apache.commons.lang3.StringUtils;
-
-import com.vision.dao.anotation.EntityField;
+import com.vision.anotation.EntityField;
 
 public class EntityFieldConfig {
     private String databaseColumnName;

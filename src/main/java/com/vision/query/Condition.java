@@ -1,4 +1,4 @@
-package com.vision.dao.query;
+package com.vision.query;
 
 /**
  * 查询条件类

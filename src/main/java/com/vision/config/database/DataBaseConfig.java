@@ -1,4 +1,4 @@
-package com.vision.dao.config.database;
+package com.vision.config.database;
 
 import java.util.Map;
 

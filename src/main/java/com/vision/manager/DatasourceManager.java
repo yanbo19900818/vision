@@ -1,7 +1,7 @@
-package com.vision.dao.manager;
+package com.vision.manager;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
-import com.vision.dao.util.PropertiesLoader;
+import com.vision.util.PropertiesLoader;
 import com.vision.exception.DaoException;
 
 import javax.naming.Context;
@@ -9,7 +9,6 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
 /**
  * 数据源

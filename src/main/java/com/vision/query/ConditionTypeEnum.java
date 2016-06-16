@@ -1,4 +1,4 @@
-package com.vision.dao.query;
+package com.vision.query;
 
 /**
  * Created by chenchen on 16/3/30.
