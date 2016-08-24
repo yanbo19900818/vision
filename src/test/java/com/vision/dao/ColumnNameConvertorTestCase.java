@@ -1,6 +1,6 @@
 package com.vision.dao;
 
-import com.vision.dao.util.ColumnNameConvertor;
+import com.vision.util.ColumnNameConvertor;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -27,7 +27,6 @@ public class ColumnNameConvertor {
         for (int i = 0; i < entityColumnName.length(); i++) {
             char c = entityColumnName.charAt(i);
             if (c >= 'A' && c <= 'Z') {
-
                 c = (char) (c + 32);
                 if (i != 0) {
                     stringBuilder.append("_");

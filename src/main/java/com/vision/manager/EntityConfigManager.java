@@ -28,11 +28,11 @@ public class EntityConfigManager {
         if (entityConfig != null) {
             return entityConfig;
         }
-        entityConfigMap.put(entityClassName, buildEntityCOnfig(entityClassName));
+        entityConfigMap.put(entityClassName, buildEntityConfig(entityClassName));
         return entityConfig;
     }
 
-    private EntityConfig buildEntityCOnfig(String entityClassName) {
+    private EntityConfig buildEntityConfig(String entityClassName) {
         EntityConfig entityConfig = entityAnnotationConfigLoader.loadEntity(entityClassName);
         DataBaseConfig dataBaseConfig = dataBaseConfigManager.getDataBaseTableConfig(entityConfig.getDatabaseName());
         Map<String, EntityFieldConfig> entityFieldConfigMap = entityConfig.getEntityFieldConfigMap();
@@ -48,7 +48,7 @@ public class EntityConfigManager {
             if (dataBaseColumnConfig == null) {
                 throw new DaoException("load entityField failed,no this field,databaseColumName=" + databaseColumnName);
             }
-            if (StringUtils.isBlank(entityFieldConfig.getDatabaseColumnType())) {
+            if (entityFieldConfig.getDatabaseColumnType()!=null) {
                 entityFieldConfig.setDatabaseColumnType(dataBaseColumnConfig.getDataType());
             }
         }

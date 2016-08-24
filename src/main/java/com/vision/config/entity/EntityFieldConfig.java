@@ -1,42 +1,13 @@
 package com.vision.config.entity;
 
-import com.vision.anotation.EntityField;
+import lombok.Data;
+import net.sf.cglib.reflect.FastMethod;
 
+import java.lang.reflect.Field;
+
+@Data
 public class EntityFieldConfig {
-    private String databaseColumnName;
-    private String databaseColumnType;
-    private String entityColumnName;
-    private String entityColumnType;
-
-    public String getDatabaseColumnName() {
-        return databaseColumnName;
-    }
-
-    public void setDatabaseColumnName(String databaseColumnName) {
-        this.databaseColumnName = databaseColumnName;
-    }
-
-    public String getDatabaseColumnType() {
-        return databaseColumnType;
-    }
-
-    public void setDatabaseColumnType(String databaseColumnType) {
-        this.databaseColumnType = databaseColumnType;
-    }
-
-    public String getEntityColumnName() {
-        return entityColumnName;
-    }
-
-    public void setEntityColumnName(String entityColumnName) {
-        this.entityColumnName = entityColumnName;
-    }
-
-    public String getEntityColumnType() {
-        return entityColumnType;
-    }
-
-    public void setEntityColumnType(String entityColumnType) {
-        this.entityColumnType = entityColumnType;
-    }
+    Field field;
+    FastMethod setMethod;
+    FastMethod getMethod;
 }

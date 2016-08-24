@@ -2,16 +2,13 @@ package com.vision.anotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Target;
+import java.sql.JDBCType;
 
 @Target(ElementType.FIELD)
 public @interface PrimaryKeyField {
-    PrimaryKeyType primaryKeyType() default PrimaryKeyType.PRIMARY_KEY;
-
-    String colName() default "";
-
-    String colType() default "";
+    PrimaryKeyType primaryKeyType() default PrimaryKeyType.AUTO_INCREASE;
 
     enum PrimaryKeyType {
-        AUTO_INCREASE, PRIMARY_KEY;
+        AUTO_INCREASE, SEQUENCE;
     }
 }
